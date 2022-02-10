@@ -1,0 +1,67 @@
+float baseH1 = 5;
+float baseH2 = 20;
+float armL1 = 40;
+float armL2 = 40;
+float armW1 = 5;
+float armW2 = 5;
+float angle0 = 0;
+float angle1 = 60;
+float angle2 = -60;
+float dif = 1.0;
+
+
+void setup(){
+  size(1200, 800, P3D);
+  camera(100, 100, 100, 0, 0, 0, 0, 0, -1);
+  
+  noStroke();  
+}
+
+void draw(){
+  
+  background(255);
+  
+  if(keyPressed){
+    if(key == 'b'){
+      angle0 = angle0 + dif;
+    }
+    if(key == 'B'){
+      angle0 = angle0 - dif;
+    }
+    if(key == 's'){
+      angle1 = angle1 + dif;
+    }
+    if(key == 'S'){
+      angle1 = angle1 - dif;
+    }
+    if(key == 'e'){
+      angle2 = angle2 + dif;
+    }
+    if(key == 'E'){
+      angle2 = angle2 - dif;
+    }
+  }
+  //base
+  rotateZ(radians(angle0));
+  translate(0,0,baseH2/2);
+  fill(50);
+  box(baseH1,baseH1,baseH2);
+  
+  //arm1
+   //joint1
+  translate(0,0,baseH2/2);
+  rotateX(radians(angle1));
+   //arm1
+  translate(0,armL1/2-armW1/2,0); //arm1
+  fill(75);
+  box(armW1,armL1,armW1);
+  
+  //arm2
+   //joint2
+  translate(0,armL1/2,0);
+  rotateX(radians(angle2));  
+   //arm2
+  translate(0,armL2/2,0);
+  fill(100);
+  box(armW2,armL2,armW2);
+}
