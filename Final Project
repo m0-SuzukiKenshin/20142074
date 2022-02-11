@@ -22,6 +22,11 @@ void draw(){
   background(255);
   
   if(keyPressed){
+    if(key == 'a'){
+      angle0 = 20*cos(angle0/10 + dif/10);
+      angle1 = 30;
+      angle2 = -60+20*cos(angle2/10 + dif/10);
+    }
     if(key == 'b'){
       angle0 = angle0 + dif;
     }
